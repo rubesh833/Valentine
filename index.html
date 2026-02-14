@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Will You Be My Valentine ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+ margin:0;
+ height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ background:linear-gradient(135deg,#ffc1d9,#ffeaf3);
+ font-family:'Poppins',sans-serif;
+ text-align:center;
+ overflow:hidden;
+}
+
+.card{
+ background:white;
+ padding:35px;
+ border-radius:25px;
+ width:85%;
+ max-width:420px;
+ box-shadow:0 20px 50px rgba(255,0,120,.2);
+}
+
+h1{
+ font-family:'Pacifico',cursive;
+ color:#ff2e88;
+ font-size:34px;
+}
+
+/* buttons */
+button{
+ padding:12px 24px;
+ margin:10px;
+ border:none;
+ border-radius:30px;
+ font-size:18px;
+ cursor:pointer;
+}
+
+#yes{
+ background:#ff2e88;
+ color:white;
+}
+
+#no{
+ background:#ddd;
+ position:absolute;
+}
+
+/* result */
+#result{
+ display:none;
+ animation:fadeIn 1.5s;
+}
+
+#teddy{
+ width:220px;
+ margin-top:15px;
+}
+
+.quote{
+ font-family:'Pacifico',cursive;
+ font-size:26px;
+ color:#ff2e88;
+ margin-top:20px;
+ opacity:0;
+ transition:1.5s;
+}
+
+@keyframes fadeIn{
+ from{opacity:0;transform:scale(.8);}
+ to{opacity:1;transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Will You Be My Valentine? ❤️</h1>
+
+<div id="question">
+<button id="yes">YES 💖</button>
+<button id="no">NO 🙈</button>
+</div>
+
+<div id="result">
+<img id="teddy" src="teddy.gif">
+
+<div id="quotes"></div>
+
+</div>
+
+</div>
+
+<audio id="bgm" src="love.mp3"></audio>
+
+<script>
+
+/* 💗 LOVE QUOTES LIST */
+const loveQuotes=[
+"I Love Youuu ❤️🥺",
+"From the moment you came into my life, everything became beautiful.",
+"Nee vandhadhum dhaan en life full color aayiduchu.",
+"Your smile is my daily happiness.",
+"Un kooda pesina odane world calm aagidum.",
+"You are not just my love… you are my peace.",
+"Naan epovume un side dhaan iruppen.",
+"Every moment with you feels like magic.",
+"Unna paatha odane heart automatic ah happy aagudhu.",
+"I don't need perfect days… I just need you.",
+"Forever nu oru word irundha adhu namma rendu per dhaan.",
+"I choose you today, tomorrow and always ❤️"
+];
+
+let yes=document.getElementById("yes");
+let no=document.getElementById("no");
+let quotesDiv=document.getElementById("quotes");
+
+/* 😜 NO button escape */
+no.addEventListener("mouseover",()=>{
+ no.style.left=Math.random()*80+"%";
+ no.style.top=Math.random()*80+"%";
+});
+
+/* YES CLICK */
+yes.onclick=()=>{
+
+ document.getElementById("question").style.display="none";
+ document.getElementById("result").style.display="block";
+ document.getElementById("bgm").play();
+
+ showQuotes();
+};
+
+/* 🎬 Cinematic quotes reveal */
+function showQuotes(){
+
+ loveQuotes.forEach((text,index)=>{
+
+   let q=document.createElement("div");
+   q.className="quote";
+   q.innerText=text;
+   quotesDiv.appendChild(q);
+
+   setTimeout(()=>{
+     q.style.opacity=1;
+   },1500*index);
+
+ });
+
+}
+
+</script>
+
+</body>
+</html>
